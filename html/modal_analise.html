@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- O modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Cabeçalho do modal -->
+      <div class="modal-header">
+        <h4 class="modal-title">Registro salvo com sucesso!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Corpo do modal -->
+      <div class="modal-body">
+        <p>Seu registro foi salvo com sucesso.</p>
+      </div>
+
+      <!-- Rodapé do modal -->
+      <div class="modal-footer">
+        <a href="index.php?class=lista_cadastros" class="btn btn-primary">Fechar</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Scripts necessários -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+// Função para exibir o modal automaticamente
+function exibirModalSucesso() {
+  $('#myModal').modal('show');
+}
+
+// Simulando a execução de um método que leva 2 segundos
+setTimeout(exibirModalSucesso, 0);
+</script>
+
+</body>
+</html>

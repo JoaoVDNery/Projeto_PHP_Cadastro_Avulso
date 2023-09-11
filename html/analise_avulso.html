@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="../css/form.css" rel="stylesheet" type="text/css" media="screen" />
+    <title>Análse Cadastro Avulso</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
+        <a class="navbar-brand" href="../classes/index.php?class=lista_cadastros">BENEFÍCIO SOCIAL SINDICAL</a>
+      </nav>
+      <style>
+        body {
+          padding-top: 50px;
+        }
+        
+        #sidebar {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 100;
+          padding: 20px;
+          background-color: #ffffff;
+          border-right: 1px solid #dee2e6;
+        }
+        
+        #content {
+          margin-left: 160px;
+          padding: 20px;
+        }
+      </style>
+      <div id="sidebar" style="padding-top: 80px;">
+        <ul class="nav flex-column">
+            <h2 class="text-secondary">Menu</h2>
+          <li class="nav-item">
+            <a class="text-secondary" href="index.php?class=lista_trabalhadores">Exibir Trabalhadores</a>
+          </li>
+          <li class="nav-item">
+            <a class="text-secondary" href="index.php?class=lista_cadastros">Visualizar solicitações</a>
+          </li>
+          <li class="nav-item">
+            <a class="text-secondary" href="index.php?class=inserir_cadastro_avulso">Novo Cadastro Avulso</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="content">
+        <div style = "position: absolute; padding-left:35px; padding-top:10px; padding-bottom:10px;">
+            <div  style="padding-top:10px; padding-bottom:10px;">
+    <div style="padding-left: 10px;" >
+    <h2>Análise - Cadastro Avulso</h2> 
+    <form enctype="multipart/form-data" method="post" action="index.php?class=analise_cadastro_avulso&method=update">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+    <input name="id" type="text" readonly='1' style="width:7%;" value='{id}' type="text" class="form-control" id="formGroupExampleInput" >
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Data do Registro</label>
+    <input name="data_registro" readonly='1' type="date" style="width:16%;" value='{data_registro}'type="text" class="form-control" id="formGroupExampleInput" >
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Status</label>
+    <select name="id_status"  type="text" style="width:50%;" class="form-control form-control-sm">{status}</select>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Nome</label>
+    <input name="trabalhador" id="trabalhador" type="text" style="width:50%;" value='{trabalhador}' type="text" class="form-control" id="formGroupExampleInput" oninput="converterParaMaisculo()">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">CPF</label>
+    <input name="cpf" type="text" style="width:50%;" value='{cpf}' autocomplete="off"  onkeypress="$(this).mask('000.000.000-00');" type="text" class="form-control" id="formGroupExampleInput" >
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Data de Nascimento</label>
+    <input name="nascimento" id="dataInput" type="date" style="width:16%;" value='{nascimento}'  class="form-control" id="validationTooltip01" >
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Data de Admissão</label>
+    <input name="admissao"  type="date" style="width:16%;" value='{admissao}'  class="form-control" id="validationTooltip01">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Sindicato</label>
+    <select name="id_sindicato"  type="text" style="width:50%;" class="form-control form-control-sm">{sindicato}</select>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Razão Social</label>
+    <input name="razao_social" id="razao_social" readonly='1' type="text" style="width:50%;" value='{empresa}'  class="form-control" id="validationTooltip01" oninput="converterParaMaisculo()">
+    <label for="inputEmail3"  class="col-sm-2 col-form-label">CNPJ</label>
+    <input name="cnpj" readonly='1' type="text" style="width:50%;" value='{cnpj}' autocomplete="off" onkeypress="$(this).mask('00.000.000/0000-00')"  class="form-control" id="validationTooltip01">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Justificativa</label>
+    <textarea name="justificativa" class="textarea" type="text" readonly='1' value='{justificativa}' style="width:50%;" rows=5 cols=25>{justificativa}</textarea>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Histórico de análise</label>
+    <textarea name="historico" value='{historico}' type="text" class="textarea" style="width:50%;" rows=5 cols=25>{historico}</textarea>
+    <br>
+      <div class="mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">CTPS ou E-social</label>
+        <input class="form-control form-control-sm" name="ctps_upload" id="formFileSm" type="file">
+        {arquivos_ctps}
+      </div>
+      <div class="mb-3">
+        <label for="formFileSm" class="form-label">Documento de Identificação</label>
+        <input class="form-control form-control-sm" name="identificacao" id="formFileSm" type="file">
+      </div>
+      {arquivos_identificacao}
+      <div class="mb-3">
+        <label for="formFileSm" class="form-label">Manifestação do sindicato</label>
+        <input class="form-control form-control-sm" name='manifestacao' id="formFileSm" type="file">
+      </div>
+      {arquivos_manifestacao}
+      <div class="mb-3">
+        <label for="formFileSm" class="form-label">Documentos Complementares</label>
+        <input class="form-control form-control-sm" name='complementar' id="formFileSm" type="file">
+      </div>
+      {arquivos_outros}
+    <input type="submit" value="Salvar" >
+
+</form>
+</div>
+</div>
+<script>
+  function converterParaMaisculo() {
+      var trabalhadorInput = document.getElementById('trabalhador');
+      var razaoSocialInput = document.getElementById('razao_social');
+
+      trabalhadorInput.value = trabalhadorInput.value.toUpperCase();
+      razaoSocialInput.value = razaoSocialInput.value.toUpperCase();
+  }
+  </script>
+</body>
+</html>
